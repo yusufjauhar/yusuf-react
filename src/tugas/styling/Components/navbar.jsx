@@ -1,13 +1,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Nav } from "react-bootstrap";
-import styled from "styled-components";
-
-const Button = styled.Button`
-  color: black;
-  font-size: 14px;
-  margin-inline: 10px;
-`;
+import { Nav } from "react-bootstrap";
+import "../Components/css/style.css";
+import Img1 from "../Components/asset/My project-1 (1).png";
+import Img2 from "../Components/asset/hero-bg.png";
+import Img3 from "../Components/asset/hero-awards.png";
+import Img4 from "../Components/asset/hero-projects.png";
 
 export default class Navbar extends React.Component {
   render() {
@@ -18,17 +16,19 @@ export default class Navbar extends React.Component {
           <div className="container">
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav mx-auto text-center">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="navbar.jsx">
                   Home
                 </a>
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="skills.jsx">
                   Skills
                 </a>
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="about.jsx">
                   About
                 </a>
               </div>
-              <Button className="btn btn-outline-danger rounded-0 d-lg-flex d-block mx-lg-0 mx-auto">Contact Me</Button>
+              <button className="btn btn-outline-danger rounded-0 d-lg-flex d-block mx-lg-0 mx-auto" href="https://api.whatsapp.com/send?phone=6287831562908">
+                Contact Me
+              </button>
             </div>
           </div>
         </Nav>
@@ -40,20 +40,20 @@ export default class Navbar extends React.Component {
                 Yusuf jauhar alif faqih
               </h1>
               <p className="lh-lg mb-4">Saya adalah seorang product designer yang mendalami front-end developer | UI UX design | adobe photoshop</p>
-              <Button className="btn btn-danger rounded-0 me-2 px-sm-4 py-sm-2 px-3 py-2">Hire Me</Button>
-              <Button className="btn btn-outline-danger rounded-0 px-sm-4 py-sm-2 px-3 py-2">Know More</Button>
+              <button className="btn btn-danger rounded-0 me-2 px-sm-4 py-sm-2 px-3 py-2">Hire Me</button>
+              <button className="btn btn-outline-danger rounded-0 px-sm-4 py-sm-2 px-3 py-2">Know More</button>
               <div className="d-flex align-items-center mt-4">
-                <i class="bi bi-person-plus-fill"></i>
+                <i className="bi bi-person-plus-fill"></i>
                 <p className="lh-lg m-0">
                   Designer and Developer <br /> specialized in front-end Developer
                 </p>
               </div>
             </div>
             <div class="col d-flex align-self-end position-relative">
-              <img src="../asset/My project-1 (1).png" alt="" class="d-block mx-auto" />
-              <img src="../asset/hero-bg.png" alt="" class="position-absolute start-50 bottom-0 translate-middle-x" />
-              <img src="../asset/hero-awards.png" alt="" class="position-absolute" />
-              <img src="../asset/hero-projects.png" alt="" class="position-absolute" />
+              <img src={Img1} className="d-block mx-auto" />
+              <img src={Img2} className="position-absolute start-50 bottom-0 translate-middle-x" />
+              <img src={Img3} className="position-absolute" />
+              <img src={Img4} className="position-absolute" />
             </div>
           </div>
         </div>

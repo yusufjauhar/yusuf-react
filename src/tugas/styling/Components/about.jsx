@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import * as Icon from "react-bootstrap-icons";
-
+import Img5 from "../Components/asset/My project-1 (1).png";
+import Img6 from "../Components/asset/about-bg.png";
 export default class About extends React.Component {
   render() {
     return (
@@ -10,8 +10,8 @@ export default class About extends React.Component {
           <div class="container">
             <div class="row row-cols-lg-2 row-cols-1 d-flex align-items-center justify-content-between">
               <div class="col position-relative align-self-end mx-auto">
-                <img src="../asset/My project-1 (1).png" alt="" />
-                <img src="../asset/about-bg.png" alt="" />
+                <img src={Img5} alt="" />
+                <img src={Img6} alt="" />
               </div>
               <div class="col col-lg-5 text-lg-start text-center">
                 <h1 class="fw-bold mb-4">About Me</h1>
