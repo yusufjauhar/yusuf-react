@@ -1,9 +1,9 @@
 import React from "react";
-import * as Validator from "validatorjs";
+import * as validator from "validatorjs";
 const input = ({ label, type, name, onChange }) => {
   return (
     <div>
-      <label> {label} : </label>
+      <label>{label} :</label>
       <br />
       <input type={type} name={name} onChange={(e) => onChange(e.target.value)} />
       <br />
@@ -13,9 +13,9 @@ const input = ({ label, type, name, onChange }) => {
 
 export default class Validation extends React.Component {
   State = {
-    username: "",
-    email: "",
-    password: "",
+    Username: "",
+    Email: "",
+    Password: "",
   };
   handleSubmit = (event) => {
     event.preventDefault();
@@ -29,9 +29,9 @@ export default class Validation extends React.Component {
       Password: "min:8|required",
     };
 
-    let Validation = new Validator(data, rules);
-    Validation.passes();
-    console.log(Validation.errors.all());
+    let validation = new validator(data, rules);
+    validation.passes();
+    console.log(validation.errors.all());
   };
   render() {
     const style = {
