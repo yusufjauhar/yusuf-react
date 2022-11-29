@@ -12,14 +12,14 @@ const input = ({ label, type, name, onChange }) => {
 };
 
 export default class Validation extends React.Component {
-  State = {
+  state = {
     Username: "",
     Email: "",
     Password: "",
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    const { Username, Email, Password } = this.State;
+    const { Username, Email, Password } = this.state;
 
     let data = { Username, Email, Password };
 
@@ -48,11 +48,11 @@ export default class Validation extends React.Component {
           <br />
           <br />
           Username <br />
-          <input type="text" name="Username" label="Username" onChange={(value) => this.setState({ Username: value })} /> <br />
+          <input type="text" name="username" label="Username" onChange={(value) => this.setState({ username: value })} /> <br />
           Email <br />
-          <input type="text" name="Email" label="Email" onChange={(value) => this.setState({ Email: value })} /> <br />
+          <input type="text" name="email" label="Email" onChange={(value) => this.setState({ email: value })} /> <br />
           Password <br />
-          <input type="Password" name="Password" label="Password" onChange={(value) => this.setState({ Password: value })} />
+          <input type="Password" name="password" label="Password" onChange={(value) => this.setState({ password: value })} />
           <br />
           <br />
           <button>Register</button>
