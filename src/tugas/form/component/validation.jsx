@@ -3,35 +3,46 @@ import * as validator from "validatorjs";
 const input = ({ label, type, name, onChange }) => {
   return (
     <div>
-      <label>{label} :</label>
-      <br />
-      <input type={type} name={name} onChange={(e) => onChange(e.target.value)} />
-      <br />
+      <label>
+        <br />
+        {label} : <input type={type} name={name} onChange={(e) => onChange(e.target.value)} />
+        <br />
+      </label>
     </div>
   );
 };
 
 export default class Validation extends React.Component {
   state = {
-    Username: "",
-    Email: "",
-    Password: "",
+    username: "",
+    email: "",
+    address: "",
+    password: "",
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    const { Username, Email, Password } = this.state;
+    console.log(this.state);
+    // };
 
-    let data = { Username, Email, Password };
+    const { username, email, address, password } = this.state;
+
+    // if (Email.lenght === 0) {
+    //   alert ('Email tidak boleh kosong')
+    // }
+
+    let data = { username, email, address, password };
 
     let rules = {
-      Username: "required",
-      Email: "required|email",
-      Password: "min:8|required",
+      username: "required",
+      email: "required|email",
+      address: "required",
+      password: "min:8|required",
     };
 
     let validation = new validator(data, rules);
+
     validation.passes();
-    console.log(validation.errors.all());
+    alert(validation.errors.get("username") + validation.errors.get("email") + validation.errors.get("address") + validation.errors.get("password"));
   };
   render() {
     const style = {
@@ -48,11 +59,44 @@ export default class Validation extends React.Component {
           <br />
           <br />
           Username <br />
-          <input type="text" name="username" label="Username" onChange={(value) => this.setState({ username: value })} /> <br />
+          <input
+            type="text"
+            name="username"
+            label="Username"
+            onChange={(value) => {
+              this.setState({ username: value.target.value });
+            }}
+          />{" "}
+          <br />
           Email <br />
-          <input type="text" name="email" label="Email" onChange={(value) => this.setState({ email: value })} /> <br />
+          <input
+            type="text"
+            name="email"
+            label="Email"
+            onChange={(value) => {
+              this.setState({ email: value.target.value });
+            }}
+          />{" "}
+          <br />
+          Address <br />
+          <input
+            type="text"
+            name="address"
+            label="Address"
+            onChange={(value) => {
+              this.setState({ address: value.target.value });
+            }}
+          />{" "}
+          <br />
           Password <br />
-          <input type="Password" name="password" label="Password" onChange={(value) => this.setState({ password: value })} />
+          <input
+            type="Password"
+            name="password"
+            label="Password"
+            onChange={(value) => {
+              this.setState({ password: value.target.value });
+            }}
+          />
           <br />
           <br />
           <button>Register</button>
