@@ -9,7 +9,7 @@ import Lifecycle from "./tugas/lifecycle";
 import Hooks from "./tugas/Hooks";
 
 function App() {
-  return <Validation />;
+  return <Lifecycle />;
 }
 
 export default App;
