@@ -1,4 +1,4 @@
-import { Card, CardGroup } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -15,12 +15,11 @@ const NewsPortal = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log(articles);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(SEARCH_NEWS + "a" + "&apiKey=" + API_KEY);
+        const response = await axios.get(HEADLINES_NEWS + API_KEY);
 
         setArticles(response.data.articles);
       } catch (error) {
@@ -48,7 +47,21 @@ const NewsPortal = () => {
         {articles.map((article) => {
           return (
             <div className="col-3">
-              <CardNews key={article.id} author={article.author} title={article.title} />
+              <Card style={{ width: "18rem" }}>
+                <Card.Img variant="top" src={article.urlToImage} />
+                <Card.Body>
+                  <Card.Title>{article.title}</Card.Title>
+                  <Card.Text>{article.author}</Card.Text>
+                  <Card.Text>{article.description}</Card.Text> <br />
+                  <Card.Footer>
+                    <small className="text-muted">{article.publishedAt}</small>
+                  </Card.Footer>{" "}
+                  <br />
+                  <a href={article.url}>
+                    <Button variant="primary">Read more</Button>
+                  </a>
+                </Card.Body>
+              </Card>
             </div>
           );
         })}
@@ -67,7 +80,7 @@ const NewsPortal = () => {
               <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll></Nav>
               <Form className="d-flex">
                 <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" id="newsQuery" />
-                <Button variant="outline-success" id="searchBtn">
+                <Button variant="outline-success" id="searchBtn" onClick={handleSearch}>
                   Search
                 </Button>
               </Form>
@@ -77,19 +90,16 @@ const NewsPortal = () => {
       </div>
     );
   }
-  function CardNews() {
-    return (
-      <div>
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text>
-            <Button variant="primary">Go somewhere</Button>
-          </Card.Body>
-        </Card>
-      </div>
-    );
+
+  async function handleSearch() {
+    const searchQuery = document.getElementById("newsQuery").value;
+    let searchUrl = SEARCH_NEWS + searchQuery + "&apiKey=" + API_KEY;
+
+    try {
+      const response = await axios.get(searchUrl);
+
+      setArticles(response.data.articles);
+    } catch (error) {}
   }
 };
 

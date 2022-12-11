@@ -7,6 +7,7 @@ import Validation from "./tugas/form/component/validation";
 import Styling from "./tugas/styling";
 import Lifecycle from "./tugas/lifecycle";
 import Hooks from "./tugas/Hooks";
+import NewsLifecycle from "./tugas/lifecycle/components/inews";
 
 function App() {
   return <Hooks />;
