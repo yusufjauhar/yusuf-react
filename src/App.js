@@ -8,9 +8,10 @@ import Styling from "./tugas/styling";
 import Lifecycle from "./tugas/lifecycle";
 import Hooks from "./tugas/Hooks";
 import NewsLifecycle from "./tugas/lifecycle/components/inews";
+import ContohRouter from "./tugas/router";
 
 function App() {
-  return <Hooks />;
+  return <ContohRouter />;
 }
 
 export default App;
