@@ -9,9 +9,10 @@ import Lifecycle from "./tugas/lifecycle";
 import Hooks from "./tugas/Hooks";
 import NewsLifecycle from "./tugas/lifecycle/components/inews";
 import ContohRouter from "./tugas/router";
+import Redux from "./tugas/Redux";
 
 function App() {
-  return <ContohRouter />;
+  return <Redux />;
 }
 
 export default App;
